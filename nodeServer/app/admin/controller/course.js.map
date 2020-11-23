@@ -1,0 +1,22 @@
+{
+    "version": 3,
+    "sources": [
+        "..\\..\\..\\src\\admin\\controller\\course.js"
+    ],
+    "names": [
+        "Base",
+        "require",
+        "module",
+        "exports",
+        "getCourseListAction",
+        "courseList",
+        "model",
+        "select",
+        "success"
+    ],
+    "mappings": ";;AAAA,MAAMA,OAAOC,QAAQ,WAAR,CAAb;AACAC,OAAOC,OAAP,GAAiB,cAAcH,IAAd,CAAmB;;AAG1BI,uBAAN,GAA4B;AAAA;;AAAA;AACxB,gBAAIC,aAAa,MAAM,MAAKC,KAAL,CAAW,QAAX,EAAqBC,MAArB,EAAvB;AACA,mBAAO,MAAKC,OAAL,CAAaH,UAAb,CAAP;AAFwB;AAG3B;;AAN+B,CAApC",
+    "file": "..\\..\\..\\src\\admin\\controller\\course.js",
+    "sourcesContent": [
+        "const Base = require('./base.js');\r\nmodule.exports = class extends Base {\r\n\r\n\r\n    async getCourseListAction() {\r\n        let courseList = await this.model('course').select();\r\n        return this.success(courseList);\r\n    }\r\n\r\n\r\n};\r\n"
+    ]
+}

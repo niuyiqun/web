@@ -1,0 +1,36 @@
+{
+    "version": 3,
+    "sources": [
+        "..\\..\\..\\src\\admin\\service\\token.js"
+    ],
+    "names": [
+        "jwt",
+        "require",
+        "secret",
+        "module",
+        "exports",
+        "think",
+        "Service",
+        "getUserId",
+        "token",
+        "result",
+        "parse",
+        "isEmpty",
+        "id",
+        "getUserInfo",
+        "userId",
+        "userInfo",
+        "model",
+        "where",
+        "find",
+        "create",
+        "sign",
+        "verify",
+        "err"
+    ],
+    "mappings": ";;AAAA,MAAMA,MAAMC,QAAQ,cAAR,CAAZ;AACA,MAAMC,SAAS,uBAAf;;AAGAC,OAAOC,OAAP,GAAiB,cAAcC,MAAMC,OAApB,CAA4B;AACzC;;;AAGMC,aAAN,GAAkB;AAAA;;AAAA;AACd,kBAAMC,QAAQH,MAAMG,KAApB;AACA,gBAAI,CAACA,KAAL,EAAY;AACR,uBAAO,CAAP;AACH;AACD,kBAAMC,SAAS,MAAM,MAAKC,KAAL,EAArB;AACA,gBAAIL,MAAMM,OAAN,CAAcF,MAAd,KAAyBA,OAAOG,EAAP,IAAa,CAA1C,EAA6C;AACzC,uBAAO,CAAP;AACH;AACD,mBAAOH,OAAOG,EAAd;AATc;AAUjB;;AAED;;;AAGMC,eAAN,GAAoB;AAAA;;AAAA;AAChB,kBAAMC,SAAS,MAAM,OAAKP,SAAL,EAArB;AACA,gBAAIO,UAAU,CAAd,EAAiB;AACb,uBAAO,IAAP;AACH;;AAED,kBAAMC,WAAW,MAAM,OAAKC,KAAL,CAAW,OAAX,EAAoBC,KAApB,CAA0B,EAACL,IAAIE,MAAL,EAA1B,EAAwCI,IAAxC,EAAvB;;AAEA,mBAAOb,MAAMM,OAAN,CAAcI,QAAd,IAA0B,IAA1B,GAAiCA,QAAxC;AARgB;AASnB;;AAEKI,UAAN,CAAaJ,QAAb,EAAuB;AAAA;AACnB,kBAAMP,QAAQR,IAAIoB,IAAJ,CAASL,QAAT,EAAmBb,MAAnB,CAAd;AACA,mBAAOM,KAAP;AAFmB;AAGtB;;AAEKE,SAAN,GAAc;AAAA;AACV,gBAAIL,MAAMG,KAAV,EAAiB;AACb,oBAAI;AACA,2BAAOR,IAAIqB,MAAJ,CAAWhB,MAAMG,KAAjB,EAAwBN,MAAxB,CAAP;AACH,iBAFD,CAEE,OAAOoB,GAAP,EAAY;AACV,2BAAO,IAAP;AACH;AACJ;AACD,mBAAO,IAAP;AARU;AASb;;AAEKD,UAAN,GAAe;AAAA;;AAAA;AACX,kBAAMZ,SAAS,MAAM,OAAKC,KAAL,EAArB;AACA,gBAAIL,MAAMM,OAAN,CAAcF,MAAd,CAAJ,EAA2B;AACvB,uBAAO,KAAP;AACH;;AAED,mBAAO,IAAP;AANW;AAOd;;AArDwC,CAA7C",
+    "file": "..\\..\\..\\src\\admin\\service\\token.js",
+    "sourcesContent": [
+        "const jwt = require('jsonwebtoken');\r\nconst secret = 'SLDLKKDS323ssdd@#@@gf';\r\n\r\n\r\nmodule.exports = class extends think.Service {\r\n    /**\r\n     * 根据header中的X-Nideshop-Token值获取用户id\r\n     */\r\n    async getUserId() {\r\n        const token = think.token;\r\n        if (!token) {\r\n            return 0;\r\n        }\r\n        const result = await this.parse();\r\n        if (think.isEmpty(result) || result.id <= 0) {\r\n            return 0;\r\n        }\r\n        return result.id;\r\n    }\r\n\r\n    /**\r\n     * 根据值获取用户信息\r\n     */\r\n    async getUserInfo() {\r\n        const userId = await this.getUserId();\r\n        if (userId <= 0) {\r\n            return null;\r\n        }\r\n\r\n        const userInfo = await this.model('admin').where({id: userId}).find();\r\n\r\n        return think.isEmpty(userInfo) ? null : userInfo;\r\n    }\r\n\r\n    async create(userInfo) {\r\n        const token = jwt.sign(userInfo, secret);\r\n        return token;\r\n    }\r\n\r\n    async parse() {\r\n        if (think.token) {\r\n            try {\r\n                return jwt.verify(think.token, secret);\r\n            } catch (err) {\r\n                return null;\r\n            }\r\n        }\r\n        return null;\r\n    }\r\n\r\n    async verify() {\r\n        const result = await this.parse();\r\n        if (think.isEmpty(result)) {\r\n            return false;\r\n        }\r\n\r\n        return true;\r\n    }\r\n\r\n};\r\n"
+    ]
+}

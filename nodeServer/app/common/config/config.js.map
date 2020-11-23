@@ -1,0 +1,17 @@
+{
+    "version": 3,
+    "sources": [
+        "..\\..\\..\\src\\common\\config\\config.js"
+    ],
+    "names": [
+        "module",
+        "exports",
+        "default_module",
+        "templateId"
+    ],
+    "mappings": "AAAA;AACAA,OAAOC,OAAP,GAAiB;AACbC,iBAAgB,KADH;AAEhBC,aAAW;AACV;AADU;AAFK,CAAjB",
+    "file": "..\\..\\..\\src\\common\\config\\config.js",
+    "sourcesContent": [
+        "// default config\r\nmodule.exports = {\r\n    default_module: 'api',\r\n\ttemplateId:{\r\n\t\t// deliveryTemplate:\r\n\t}\r\n};\r\n"
+    ]
+}

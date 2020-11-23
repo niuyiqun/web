@@ -1,0 +1,32 @@
+{
+    "version": 3,
+    "sources": [
+        "..\\..\\..\\src\\admin\\controller\\admin.js"
+    ],
+    "names": [
+        "Base",
+        "require",
+        "module",
+        "exports",
+        "adminDetailAction",
+        "id",
+        "getLoginUserId",
+        "info",
+        "model",
+        "where",
+        "find",
+        "success",
+        "adminEditAction",
+        "mobilePhone",
+        "post",
+        "gender",
+        "email",
+        "upData",
+        "update"
+    ],
+    "mappings": ";;AAAA,MAAMA,OAAOC,QAAQ,WAAR,CAAb;AACAC,OAAOC,OAAP,GAAiB,cAAcH,IAAd,CAAmB;AAChC;;;;;AAKMI,qBAAN,GAA0B;AAAA;;AAAA;AACtB,gBAAIC,KAAK,MAAKC,cAAL,EAAT;AACA,gBAAIC,OAAO,MAAM,MAAKC,KAAL,CAAW,OAAX,EAAoBC,KAApB,CAA0B;AACvCJ,oBAAIA;AADmC,aAA1B,EAEdK,IAFc,EAAjB;AAGA,mBAAO,MAAKC,OAAL,CAAaJ,IAAb,CAAP;AALsB;AAMzB;;AAEKK,mBAAN,GAAwB;AAAA;;AAAA;AACpB,gBAAIP,KAAK,OAAKC,cAAL,EAAT;AACA,gBAAIO,cAAc,OAAKC,IAAL,CAAU,aAAV,CAAlB;AACA,gBAAIC,SAAS,OAAKD,IAAL,CAAU,QAAV,CAAb;AACA,gBAAIE,QAAQ,OAAKF,IAAL,CAAU,OAAV,CAAZ;AACA,gBAAIG,SAAS;AACTJ,6BAAaA,WADJ;AAETE,wBAAQA,MAFC;AAGTC,uBAAOA;AAHE,aAAb;AAKA,kBAAM,OAAKR,KAAL,CAAW,OAAX,EAAoBC,KAApB,CAA0B;AAC5BJ,oBAAIA;AADwB,aAA1B,EAEHa,MAFG,CAEID,MAFJ,CAAN;AAGA,mBAAO,OAAKN,OAAL,EAAP;AAboB;AAcvB;AA5B+B,CAApC",
+    "file": "..\\..\\..\\src\\admin\\controller\\admin.js",
+    "sourcesContent": [
+        "const Base = require('./base.js');\r\nmodule.exports = class extends Base {\r\n    /**\r\n     * index action\r\n     * @return {Promise} []\r\n     */\r\n\r\n    async adminDetailAction() {\r\n        let id = this.getLoginUserId()\r\n        let info = await this.model('admin').where({\r\n            id: id\r\n        }).find();\r\n        return this.success(info);\r\n    }\r\n\r\n    async adminEditAction() {\r\n        let id = this.getLoginUserId()\r\n        let mobilePhone = this.post('mobilePhone');\r\n        let gender = this.post('gender');\r\n        let email = this.post('email');\r\n        let upData = {\r\n            mobilePhone: mobilePhone,\r\n            gender: gender,\r\n            email: email,\r\n        };\r\n        await this.model('admin').where({\r\n            id: id\r\n        }).update(upData);\r\n        return this.success();\r\n    }\r\n};\r\n"
+    ]
+}

@@ -1,0 +1,136 @@
+{
+  "admin": {
+    "port": 8360,
+    "workers": 0,
+    "stickyCluster": false,
+    "startServerTimeout": 3000,
+    "reloadSignal": "SIGUSR2",
+    "processKillTimeout": 10000,
+    "jsonpCallbackField": "callback",
+    "jsonContentType": "application/json",
+    "jsonpContentType": "application/javascript",
+    "errnoField": "errno",
+    "errmsgField": "errmsg",
+    "defaultErrno": 1000,
+    "validateDefaultErrno": 1001,
+    "default_module": "api",
+    "templateId": {},
+    "cache": {
+      "type": "file",
+      "file": {
+        "timeout": 86400000,
+        "cachePath": "D:\\大学\\大二上\\web\\NodeJsVue\\nodeServer\\runtime\\cache",
+        "pathDepth": 1,
+        "gcInterval": 86400000
+      }
+    },
+    "model": {
+      "type": "mysql",
+      "mysql": {
+        "logConnect": true,
+        "logSql": true,
+        "database": "webteach",
+        "prefix": "",
+        "encoding": "utf8",
+        "host": "202.194.14.120",
+        "port": "3306",
+        "user": "webteach",
+        "password": "webteach",
+        "dateStrings": true
+      }
+    },
+    "logger": {
+      "type": "console",
+      "console": {},
+      "file": {
+        "backups": 10,
+        "absolute": true,
+        "maxLogSize": 51200,
+        "filename": "D:\\大学\\大二上\\web\\NodeJsVue\\nodeServer\\logs\\app.log"
+      },
+      "dateFile": {
+        "level": "ALL",
+        "absolute": true,
+        "pattern": "-yyyy-MM-dd",
+        "alwaysIncludePattern": true,
+        "filename": "D:\\大学\\大二上\\web\\NodeJsVue\\nodeServer\\logs\\app.log"
+      }
+    },
+    "view": {
+      "type": "nunjucks",
+      "nunjucks": {
+        "viewPath": "D:\\大学\\大二上\\web\\NodeJsVue\\nodeServer\\view",
+        "sep": "_",
+        "extname": ".html",
+        "options": {}
+      }
+    }
+  },
+  "common": {
+    "port": 8360,
+    "workers": 0,
+    "stickyCluster": false,
+    "startServerTimeout": 3000,
+    "reloadSignal": "SIGUSR2",
+    "processKillTimeout": 10000,
+    "jsonpCallbackField": "callback",
+    "jsonContentType": "application/json",
+    "jsonpContentType": "application/javascript",
+    "errnoField": "errno",
+    "errmsgField": "errmsg",
+    "defaultErrno": 1000,
+    "validateDefaultErrno": 1001,
+    "default_module": "api",
+    "templateId": {},
+    "cache": {
+      "type": "file",
+      "file": {
+        "timeout": 86400000,
+        "cachePath": "D:\\大学\\大二上\\web\\NodeJsVue\\nodeServer\\runtime\\cache",
+        "pathDepth": 1,
+        "gcInterval": 86400000
+      }
+    },
+    "model": {
+      "type": "mysql",
+      "mysql": {
+        "logConnect": true,
+        "logSql": true,
+        "database": "webteach",
+        "prefix": "",
+        "encoding": "utf8",
+        "host": "202.194.14.120",
+        "port": "3306",
+        "user": "webteach",
+        "password": "webteach",
+        "dateStrings": true
+      }
+    },
+    "logger": {
+      "type": "console",
+      "console": {},
+      "file": {
+        "backups": 10,
+        "absolute": true,
+        "maxLogSize": 51200,
+        "filename": "D:\\大学\\大二上\\web\\NodeJsVue\\nodeServer\\logs\\app.log"
+      },
+      "dateFile": {
+        "level": "ALL",
+        "absolute": true,
+        "pattern": "-yyyy-MM-dd",
+        "alwaysIncludePattern": true,
+        "filename": "D:\\大学\\大二上\\web\\NodeJsVue\\nodeServer\\logs\\app.log"
+      }
+    },
+    "view": {
+      "type": "nunjucks",
+      "nunjucks": {
+        "viewPath": "D:\\大学\\大二上\\web\\NodeJsVue\\nodeServer\\view",
+        "sep": "_",
+        "extname": ".html",
+        "options": {}
+      }
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+    "version": 3,
+    "sources": [
+        "..\\..\\..\\src\\admin\\controller\\base.js"
+    ],
+    "names": [
+        "module",
+        "exports",
+        "think",
+        "Controller",
+        "__before",
+        "token",
+        "ctx",
+        "header",
+        "tokenSerivce",
+        "service",
+        "state",
+        "userId",
+        "getUserId",
+        "controller",
+        "fail",
+        "getLoginUserId"
+    ],
+    "mappings": ";;AAAAA,OAAOC,OAAP,GAAiB,cAAcC,MAAMC,UAApB,CAA+B;AACxCC,UAAN,GAAiB;AAAA;;AAAA;AACf;AACAF,YAAMG,KAAN,GAAc,MAAKC,GAAL,CAASC,MAAT,CAAgB,SAAhB,KAA8B,EAA5C;AACA,YAAMC,eAAeN,MAAMO,OAAN,CAAc,OAAd,EAAuB,OAAvB,CAArB;AACA,YAAKH,GAAL,CAASI,KAAT,CAAeC,MAAf,GAAwB,MAAMH,aAAaI,SAAb,EAA9B;AACA;AACA,UAAI,MAAKN,GAAL,CAASO,UAAT,KAAwB,MAA5B,EAAoC;AAClC,YAAI,MAAKP,GAAL,CAASI,KAAT,CAAeC,MAAf,IAAyB,CAA7B,EAAgC;AAC9B,iBAAO,MAAKG,IAAL,CAAU,GAAV,EAAe,MAAf,CAAP;AACD;AACF;AAVc;AAYhB;AACDC,mBAAiB;AACf,WAAO,KAAKT,GAAL,CAASI,KAAT,CAAeC,MAAtB;AACD;AAhB6C,CAAhD",
+    "file": "..\\..\\..\\src\\admin\\controller\\base.js",
+    "sourcesContent": [
+        "module.exports = class extends think.Controller {\r\n  async __before() {\r\n    // 根据token值获取用户id\r\n    think.token = this.ctx.header['x-token'] || '';\r\n    const tokenSerivce = think.service('token', 'admin');\r\n    this.ctx.state.userId = await tokenSerivce.getUserId();\r\n    // 只允许登录操作\r\n    if (this.ctx.controller !== 'auth') {\r\n      if (this.ctx.state.userId <= 0) {\r\n        return this.fail(401, '请先登录');\r\n      }\r\n    }\r\n\r\n  }\r\n  getLoginUserId() {\r\n    return this.ctx.state.userId;\r\n  }\r\n};\r\n"
+    ]
+}
